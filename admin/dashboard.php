@@ -2,6 +2,10 @@
 <?php
 require_once __DIR__ . '/../includes/auth.php';
 requireRole('admin');
+
+$pageTitle = 'Admin Dashboard | StudyCircle';
+require_once __DIR__ . '/../includes/header.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -33,3 +37,5 @@ requireRole('admin');
 
 </body>
 </html>
+
+<?php require_once __DIR__ . '/../includes/footer.php'; ?>

@@ -1,23 +1,145 @@
+
+/* General Page Styling */
 body {
-    background-color: #f5f7fb;
-    color: #202938;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    background-color: #f8f9fa;
+    color: #212529;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
 }
 
+main {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+}
+
+/* Shared Navbar Styling */
+.navbar {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.navbar-brand {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    line-height: 1.5;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.navbar .nav-link {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    transition: color 0.2s ease;
+}
+
+.navbar .navbar-text {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+.navbar .btn {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    border-radius: 7px;
+}
+
+.navbar .nav-link:hover {
+    color: #ffffff;
+}
+
+/* Main Content */
 .welcome-card {
-    background: white;
-    border: 1px solid #e4e8f0;
+    background-color: #ffffff;
+    color: #212529;
 }
 
 .card {
-    border: 1px solid #e4e8f0;
-    border-radius: 16px;
-    transition: transform 0.2s;
+    border: none;
+    border-radius: 12px;
 }
 
-.card:hover {
-    transform: translateY(-4px);
+.card-title {
+    font-weight: 700;
 }
 
+.btn {
+    border-radius: 7px;
+}
+
+/* Consistent footer placement */
 footer {
-    color: #667085;
+    width: 100%;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+footer h5 {
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+footer p {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+footer .small {
+    font-size: 14px;
+}
+
+/* Mobile Layout */
+@media (max-width: 991.98px) {
+    .navbar .navbar-collapse {
+        padding-top: 12px;
+        padding-bottom: 8px;
+    }
+
+    .navbar .nav-link {
+        padding: 8px 0;
+    }
+
+    .navbar .btn {
+        margin-top: 6px;
+        margin-bottom: 6px;
+    }
+}
+
+
+/* Use consistent content width and spacing */
+.page-container {
+    width: 100%;
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+/* Consistent footer placement */
+footer {
+    width: 100%;
+    margin-top: auto;
+    flex-shrink: 0;
 }

@@ -1,99 +1,163 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<?php
+$pageTitle = 'NSBM StudyCircle - Learn Together';
 
-    <title>NSBM StudyCircle</title>
+require_once __DIR__ . '/includes/header.php';
+?>
 
-    <!-- Bootstrap CSS -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-        crossorigin="anonymous">
+<!-- Welcome Section -->
+<section class="container py-5">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
+    <div class="welcome-card text-center p-4 p-md-5 rounded-4">
 
-<body>
+        <h1 class="display-5 fw-bold">
+            Learn Together. Grow Together.
+        </h1>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="index.php">
-                StudyCircle
-            </a>
+        <p class="lead mt-3">
+            Share lecture notes, discover study materials,
+            and connect with fellow students.
+        </p>
 
-            <div class="ms-auto">
-                <a href="auth/login.php"
-                   class="btn btn-outline-light me-2">Login</a>
+        <?php if (!isset($_SESSION['user_id'])): ?>
 
-                <a href="auth/register.php"
-                   class="btn btn-light">Register</a>
-            </div>
-        </div>
-    </nav>
-
-    <main class="container py-5">
-        <div class="welcome-card text-center p-5 rounded-4">
-            <h1 class="display-5 fw-bold">
-                Learn Together. Grow Together.
-            </h1>
-
-            <p class="lead mt-3">
-                Share lecture notes, discover study materials,
-                and connect with fellow students.
-            </p>
-
-            <a href="#features" class="btn btn-primary btn-lg mt-3">
+            <a href="#features"
+               class="btn btn-primary btn-lg mt-3">
                 Explore Features
             </a>
+
+            <div class="mt-3">
+                <a href="/NSBM-StudyCircle/auth/register.php"
+                   class="btn btn-outline-primary me-2">
+                    Join StudyCircle
+                </a>
+
+                <a href="/NSBM-StudyCircle/auth/login.php"
+                   class="btn btn-primary">
+                    Login
+                </a>
+            </div>
+
+        <?php else: ?>
+
+            <?php if (($_SESSION['role'] ?? '') === 'admin'): ?>
+
+                <a href="/NSBM-StudyCircle/admin/dashboard.php"
+                   class="btn btn-primary btn-lg mt-3">
+                    Go to Admin Dashboard
+                </a>
+
+            <?php else: ?>
+
+                <a href="/NSBM-StudyCircle/student/dashboard.php"
+                   class="btn btn-primary btn-lg mt-3">
+                    Go to Student Dashboard
+                </a>
+
+            <?php endif; ?>
+
+        <?php endif; ?>
+
+    </div>
+
+    <!-- Features Section -->
+    <section id="features" class="row g-4 mt-4">
+
+        <!-- Study Materials -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 p-3 shadow-sm">
+                <div class="card-body">
+                    <div class="fs-1 mb-3">📚</div>
+
+                    <h2 class="h5 fw-bold">
+                        Study Materials
+                    </h2>
+
+                    <p class="text-secondary">
+                        Share and access lecture notes and
+                        useful educational resources.
+                    </p>
+                </div>
+            </div>
         </div>
 
-        <section id="features" class="row g-4 mt-4">
-            <div class="col-md-4">
-                <div class="card h-100 p-3">
-                    <div class="card-body">
-                        <h2 class="h5">Study Materials</h2>
-                        <p>Share and access lecture notes.</p>
-                    </div>
+        <!-- Discussion Forum -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 p-3 shadow-sm">
+                <div class="card-body">
+                    <div class="fs-1 mb-3">💬</div>
+
+                    <h2 class="h5 fw-bold">
+                        Discussion Forum
+                    </h2>
+
+                    <p class="text-secondary">
+                        Ask questions, exchange ideas, and
+                        help other students learn.
+                    </p>
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-4">
-                <div class="card h-100 p-3">
-                    <div class="card-body">
-                        <h2 class="h5">Discussion Forum</h2>
-                        <p>Ask questions and help other students.</p>
-                    </div>
+        <!-- Study Groups -->
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 p-3 shadow-sm">
+                <div class="card-body">
+                    <div class="fs-1 mb-3">👥</div>
+
+                    <h2 class="h5 fw-bold">
+                        Study Groups
+                    </h2>
+
+                    <p class="text-secondary">
+                        Collaborate with classmates and
+                        learn together.
+                    </p>
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-4">
-                <div class="card h-100 p-3">
-                    <div class="card-body">
-                        <h2 class="h5">Study Groups</h2>
-                        <p>Collaborate and learn together.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
+    </section>
 
-    <footer class="text-center py-4 mt-5">
-        <p class="mb-0">
-            &copy; 2026 NSBM StudyCircle
+    <!-- Call to Action -->
+    <section class="text-center py-5 mt-4">
+
+        <h2 class="fw-bold">
+            Your Learning Community Starts Here
+        </h2>
+
+        <p class="text-secondary mt-3">
+            Connect with students and make learning
+            a collaborative experience.
         </p>
-    </footer>
 
-    <!-- Bootstrap JavaScript -->
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
+        <?php if (!isset($_SESSION['user_id'])): ?>
 
-    <script src="assets/js/script.js"></script>
-</body>
-</html>
+            <a href="/NSBM-StudyCircle/auth/register.php"
+               class="btn btn-primary btn-lg mt-2">
+                Get Started
+            </a>
+
+        <?php elseif (($_SESSION['role'] ?? '') === 'admin'): ?>
+
+            <a href="/NSBM-StudyCircle/admin/dashboard.php"
+               class="btn btn-primary btn-lg mt-2">
+                Open Admin Dashboard
+            </a>
+
+        <?php else: ?>
+
+            <a href="/NSBM-StudyCircle/student/dashboard.php"
+               class="btn btn-primary btn-lg mt-2">
+                Open Student Dashboard
+            </a>
+
+        <?php endif; ?>
+
+    </section>
+
+</section>
+
+<?php
+require_once __DIR__ . '/includes/footer.php';
+?>
